@@ -4,8 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Online E-book Reading Project</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="css/main.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://accounts.google.com/gsi/client" async defer></script>
 
 </head>
@@ -18,12 +19,31 @@
          
       </div>
         <nav class="navbar">
-          <!-- nav bar -->
-           <a class="Home" >Home</a>
-           <a  class="Categories">Categories</a>
-           <a class="My-books">My Books</a>
-           
-         </nav>
+    <!-- nav bar -->
+    <a class="Home" >Home</a>
+    
+    <!-- Categories Dropdown -->
+    <div class="categories-dropdown">
+        <a class="Categories">
+            Categories 
+            <i class='bx bx-chevron-down'></i>
+        </a>
+        <div class="dropdown-content">
+            <a href="#" data-category="trending">📚 Trending Books</a>
+            <a href="#" data-category="self-help">💡 Self Help</a>
+            <a href="#" data-category="fiction">📖 Fiction</a>
+            <a href="#" data-category="romance">💕 Romance</a>
+            <a href="#" data-category="mystery">🔍 Mystery</a>
+            <a href="#" data-category="biography">👤 Biography</a>
+            <a href="#" data-category="science">🔬 Science</a>
+            <a href="#" data-category="all">🌐 All Books</a>
+        </div>
+    </div>
+    
+    <a class="My-books">My Books</a>
+    <a class="Upload"  href="">Upload</a> 
+</nav>
+
 
         <div class="search-bar">
             <div class="search-icon">
@@ -31,7 +51,7 @@
                 <!-- icon -->
             </div>
 
-            <input type="input-box" placeholder="What book are you looking for?" >
+            <input type="input-box" id="searchInput"  placeholder="What book are you looking for?" >
         </div>
 
 
@@ -43,8 +63,8 @@
 
         <!-- Sign In and Sign Up buttons -->
 <div class="login">
-  <a href="signin.html"><button class="signin-btn" id="signInBtn">Login</button></a>
-  <a href="signin.html"> <button class="signup-btn" id="signUpBtn">Sign Up</button></a>
+  <a href="pages/login.html"><button class="signin-btn" id="signInBtn">Login</button></a>
+  <a href="#"> <button class="signup-btn" id="signUpBtn">Sign Up</button></a>
 </div>
 
 
@@ -61,12 +81,18 @@
     <main>
           
 
-          <div class="banner_container">
-            <img src="img/banner1.png" class="banner_image active" alt="Banner 1">
-            <img src="img/banner2.png" class="banner_image" alt="Banner 2">
-            <img src="img/banner3.png" class="banner_image" alt="Banner 3">
-           
-          </div>
+        <section class="banner_container" id="home">
+          <img src="assets/images/banner1.png" class="banner_image active" alt="Banner 1">
+          <img src="assets/images/banner2.png" class="banner_image" alt="Banner 2">
+          <img src="assets/images/banner3.png" class="banner_image" alt="Banner 3">
+          
+          <button class="carousel-btn prev" onclick="previousBanner()">
+              <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="carousel-btn next" onclick="nextBanner()">
+              <i class="fas fa-chevron-right"></i>
+          </button>
+      </section>
 
 
           <!-- ------------------------------------------------------------------------------- -->
@@ -79,7 +105,7 @@
 
          
             <div class="book-card">
-              <a href="#"><img src="img/img1.webp" alt="Atomic Habits" class="trending-books"></a>
+              <a href="#"><img src="assets/images/img1.webp" alt="Atomic Habits" class="trending-books"></a>
               <!-- about book -->
               <div class="book-description">
                 <p><strong>Title:</strong> Atomic Habits</p>
@@ -575,7 +601,7 @@
     </div>
     <div class="footer-contact">
       <h4>Contact Us</h4>
-      <p>Email: support@yoursite.com</p>
+      <p>Email: deepanshu@gandu.com</p>
       <p>Phone: +1 234 567 890</p>
     </div>
     <div class="footer-social">
@@ -594,8 +620,9 @@
 </footer>
 
 
-
+<script src="../js/main.js"></script>
+    <script src="../js/search.js"></script>
   
 </body>
-<script src="index.js"></script>
+
 </html>

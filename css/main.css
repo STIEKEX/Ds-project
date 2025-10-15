@@ -33,7 +33,7 @@ body{
 .logo{
   height: 65px;
   width: 99px;
-  background-image: url(img/png-clipart-white-and-orange-book-logo-symbol-yellow-orange-logo-ibooks-orange-logo.png);
+  background-image: url(/assets/website-logo/png-clipart-white-and-orange-book-logo-symbol-yellow-orange-logo-ibooks-orange-logo.png);
   background-size: cover;
   cursor: pointer;
   background-color: transparent;
@@ -51,7 +51,7 @@ body{
 }
 
 
-.navbar a {
+/* .navbar a {
   color:  #282c3f;
   text-decoration: none;
   font-size: 14px;
@@ -62,6 +62,40 @@ body{
   padding: 30px 0 ;
 
 
+} */
+
+
+
+.navbar a {
+    color: #282c3f;
+    text-decoration: none;
+    font-size: 14px;
+    letter-spacing: .3px;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 30px 10px;
+    transition: all 0.3s;
+    position: relative;
+}
+
+.navbar a:hover {
+    color: #ffc12c;
+}
+
+.navbar a::after {
+    content: '';
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background: #ffc12c;
+    transition: width 0.3s;
+}
+
+.navbar a:hover::after {
+    width: 80%;
 }
 
 
@@ -126,6 +160,8 @@ body{
     cursor: pointer;
 } 
 
+
+
 .signin-btn {
   padding: 5px 25px;
   background: #ffc12c;        
@@ -189,6 +225,32 @@ body{
   transform: translateX(0);
 }
 
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.9);
+    border: none;
+    width: 50px;    
+
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    color: #282c3f;
+    z-index: 10;
+    transition: all 0.3s;
+}
+
+.carousel-btn:hover {
+    background: #ffc12c;
+    color: #fff;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-btn.prev { left: 20px; }
+.carousel-btn.next { right: 20px; }
 
 .category_heading{
     text-transform: uppercase;
@@ -468,3 +530,237 @@ hr {
 .g_id_signin {
   margin: 0 auto;
 }
+
+
+/* ============================================
+   NO RESULTS MESSAGE STYLES
+   ============================================ */
+
+.no-results-message {
+    width: 100%;
+    padding: 60px 20px;
+    text-align: center;
+    animation: fadeIn 0.5s ease-in-out;
+    grid-column: 1 / -1; /* Spans all grid columns */
+}
+
+.no-results-content {
+    max-width: 500px;
+    margin: 0 auto;
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.no-results-content svg {
+    color: #1976d2;
+    margin-bottom: 20px;
+    opacity: 0.7;
+}
+
+.no-results-content h2 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.no-results-content p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.no-results-content p strong {
+    color: #1976d2;
+    font-weight: 600;
+}
+
+.no-results-content .suggestion {
+    font-size: 14px;
+    color: #999;
+    margin-top: 15px;
+    font-style: italic;
+}
+
+.clear-search-btn {
+    margin-top: 25px;
+    padding: 12px 30px;
+    background-color: #1976d2;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(25, 118, 210, 0.3);
+}
+
+.clear-search-btn:hover {
+    background-color: #1565c0;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(25, 118, 210, 0.4);
+}
+
+.clear-search-btn:active {
+    transform: translateY(0);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .no-results-content {
+        padding: 30px 20px;
+    }
+    
+    .no-results-content h2 {
+        font-size: 24px;
+    }
+    
+    .no-results-content svg {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+/* ==========================================
+   CATEGORIES DROPDOWN STYLES (HOVER + CLICK)
+   ========================================== */
+
+.categories-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.categories-dropdown .Categories {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.3s ease;
+    user-select: none;
+}
+
+.categories-dropdown .Categories:hover {
+    color: #1976d2;
+}
+
+.categories-dropdown .Categories i {
+    transition: transform 0.3s ease;
+}
+
+/* Rotate arrow on hover OR when clicked (active) */
+.categories-dropdown:hover .Categories i,
+.categories-dropdown .Categories.active i {
+    transform: rotate(180deg);
+}
+
+/* Dropdown Content - Hidden by default */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    min-width: 220px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    z-index: 1000;
+    margin-top: 10px;
+    padding: 10px 0;
+    animation: fadeInDown 0.3s ease;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Show dropdown on HOVER */
+.categories-dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* ALSO show dropdown when clicked (active class) */
+.categories-dropdown .dropdown-content.active {
+    display: block;
+}
+
+/* Dropdown Links - NO UNDERLINES */
+.dropdown-content a {
+    color: #333;
+    padding: 12px 20px;
+    text-decoration: none !important;
+    display: block;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    border: none !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+}
+
+.dropdown-content a:hover {
+    background-color: #e3f2fd;
+    color: #1976d2;
+    text-decoration: none !important;
+    border: none !important;
+}
+
+/* Remove underlines for all link states */
+.dropdown-content a:focus,
+.dropdown-content a:active,
+.dropdown-content a:visited {
+    text-decoration: none !important;
+    border: none !important;
+}
+
+/* Active/selected category style */
+.dropdown-content a.active {
+    background-color: #e3f2fd;
+    color: #1976d2;
+    font-weight: 600;
+    text-decoration: none !important;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .dropdown-content {
+        position: fixed;
+        top: 60px;
+        left: 0;
+        right: 0;
+        width: 100%;
+        border-radius: 0;
+        max-height: 400px;
+        overflow-y: auto;
+    }
+    
+    /* On mobile, disable hover and only use click */
+    .categories-dropdown:hover .dropdown-content {
+        display: none;
+    }
+    
+    .categories-dropdown .dropdown-content.active {
+        display: block;
+    }
+}
+
